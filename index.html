@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equation</title>
+    <script language="javascript">
+        function square_equation() 
+        {
+            var a = document.square.square_a.value;
+            var b = document.square.square_b.value;
+            var c = document.square.square_c.value;
+            var sol = document.getElementById("square_sol");
+            var d = b * b - 4 * a * c;
+            if ( d < 0 ) {
+                string = "<br>Warning, D < 0";
+                } 
+            else {
+                if ( d == 0 ) {
+                    string = "<br>x<sub>1</sub> = x<sub>2</sub> = ";
+                    string += -b / ( 2 * a );
+                } else {
+                    string = "<br>x<sub>1</sub> = ";
+                    string += Number((-b / ( 2 * a ) - Math.sqrt( d ) / ( 2 * a )).toFixed(2));
+                    string += ", x<sub>2</sub> = ";
+                    string += Number((-b / ( 2 * a ) + Math.sqrt( d ) / ( 2 * a )).toFixed(2));
+                }
+            }
+            sol.innerHTML = string;
+        }
+    </script>
+</head>
+<body>
+    <div align="center">
+        <p>ax<sup>2</sup> + bx + c = 0</p>
+    <form name="square" action="javascript:square_equation()">
+        a <input name="square_a" size="4">
+        b <input name="square_b" size="4">
+        c <input name="square_c" size="4">
+        <input type="submit" value="solve">
+    </form>
+    <span id="square_sol"></span>
+    </div>
+</body>
+</html>
